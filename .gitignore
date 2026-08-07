@@ -1,0 +1,20 @@
+# Local Hermes State & Secrets
+config.yaml
+sessions.db
+state.db
+state.db-shm
+state.db-wal
+verification_evidence.db
+cache/
+memories/
+.env
+.hermes_history
+logs/
+sessions/
+pastes/
+interrupt_debug.log
+*_cache.json
+auth.json
+auth.lock
+skills/.usage.json*
+skills/.curator_*
