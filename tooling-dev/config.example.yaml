@@ -1,8 +1,6 @@
 model:
-  default: gemini-3.5-flash
+  default: gemini-3.6-flash
   provider: gemini
-  max_tokens: "<YOUR_SECRET_HERE>"
-  reasoning_effort: low
-onboarding:
-  seen:
-    tool_progress_prompt: true
+fallback_providers:
+- provider: anthropic
+  model: claude-sonnet-5

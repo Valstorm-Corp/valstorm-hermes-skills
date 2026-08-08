@@ -1,11 +1,14 @@
 model:
   default: gemini-3.5-flash-lite
   provider: gemini
-  max_tokens: "<YOUR_SECRET_HERE>"
+  max_tokens: <YOUR_SECRET_HERE>
   reasoning_effort: low
 command_allowlist:
-  - recursive delete
+- recursive delete
 onboarding:
   seen:
     tool_progress_prompt: true
 _config_version: 31
+fallback_providers:
+- provider: openai-api
+  model: gpt-5.6-luna
