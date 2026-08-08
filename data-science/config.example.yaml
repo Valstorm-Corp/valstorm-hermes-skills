@@ -1,0 +1,6 @@
+model:
+  default: gemini-3.6-flash
+  provider: gemini
+fallback_providers:
+- provider: anthropic
+  model: claude-sonnet-5
