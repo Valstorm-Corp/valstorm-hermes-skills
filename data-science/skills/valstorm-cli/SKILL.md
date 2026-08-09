@@ -53,6 +53,14 @@ Auth is stored in `~/.valstorm/auth_{env}_{profile}.json`. The MCP server and CL
 - **Login via PAT**: `uv run --project cli valstorm auth login pat <YOUR_PAT> --env dev`
 - **Check API health**: `uv run --project cli valstorm status`
 
+### 7. Virtual File System (VFS)
+Agents can interact with the Valstorm file system for RAG, knowledge retrieval, and file operations. **Always append `--json` when reading data as an AI.**
+- **List Vault Contents**: `uv run --project cli valstorm vfs list <vault_id> --json` (use `root` for the root vault)
+- **Query VFS Metadata**: `uv run --project cli valstorm vfs query --query "SELECT * FROM files" --json`
+- **Move Item**: `uv run --project cli valstorm vfs move <item_id> --from-vault-id <source_id> --to-vault-id <dest_id> --json`
+- **Rebuild Cache**: `uv run --project cli valstorm vfs rebuild-cache`
+- *(Note: `upload`, `download`, and `delete` are currently stubs and will be implemented soon).*
+
 ## Pitfalls & Best Practices
 - **JSON Output:** Always append `-o json` (or `--json` for VFS) when you need to parse the output programmatically. Terminal tables are hard for LLMs to read reliably.
 - **Do NOT guess schema definitions:** Always run `schema get <name>` before attempting to `record create` or `record update` to ensure you are passing the correct field types.

@@ -10,6 +10,6 @@ fallback_providers:
     model: gpt-5.6-terra
 approvals:
   destructive_slash_confirm: false
-API_SERVER_KEY: c7ed2c7fb01dcfa2a81064158b3b4fe5cd4f069c13ad353cbb1c962620d112b3
+API_SERVER_KEY: ac701b75f3e6867f1568ca60042d1c57c3cde44fd858c38fa945da122927a426
 API_SERVER_PORT: 8642
 API_SERVER_CORS_ORIGINS: '*'
