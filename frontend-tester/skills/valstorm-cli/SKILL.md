@@ -54,12 +54,17 @@ Auth is stored in `~/.valstorm/auth_{env}_{profile}.json`. The MCP server and CL
 - **Check API health**: `uv run --project cli valstorm status`
 
 ### 7. Virtual File System (VFS)
-Agents can interact with the Valstorm file system for RAG, knowledge retrieval, and file operations. **Always append `--json` when reading data as an AI.**
+Agents can interact with the Valstorm file system for RAG, knowledge retrieval, and full CRUD file operations. 
+*Note: VFS commands do not currently accept `--profile` or `--env` flags. You must either run them in a directory containing `valstorm.json` OR export `VALSTORM_PROFILE` and `VALSTORM_ENV` before running.*
+
+**Always append `--json` when reading data as an AI.**
 - **List Vault Contents**: `uv run --project cli valstorm vfs list <vault_id> --json` (use `root` for the root vault)
 - **Query VFS Metadata**: `uv run --project cli valstorm vfs query --query "SELECT * FROM files" --json`
+- **Upload File**: `uv run --project cli valstorm vfs upload /path/to/local/file.txt <vault_id> --json`
+- **Download File**: `uv run --project cli valstorm vfs download <file_id> /path/to/destination/ --json`
 - **Move Item**: `uv run --project cli valstorm vfs move <item_id> --from-vault-id <source_id> --to-vault-id <dest_id> --json`
-- **Rebuild Cache**: `uv run --project cli valstorm vfs rebuild-cache`
-- *(Note: `upload`, `download`, and `delete` are currently stubs and will be implemented soon).*
+- **Delete Item**: `uv run --project cli valstorm vfs delete <item_id> --json`
+- **Rebuild Cache**: `uv run --project cli valstorm vfs rebuild-cache --json`
 
 ## Pitfalls & Best Practices
 - **JSON Output:** Always append `-o json` (or `--json` for VFS) when you need to parse the output programmatically. Terminal tables are hard for LLMs to read reliably.
