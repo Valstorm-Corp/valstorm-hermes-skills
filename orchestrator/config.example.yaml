@@ -1,15 +1,17 @@
 model:
-  default: claude-sonnet-5
-  provider: anthropic
-onboarding:
-  seen:
-    busy_input_prompt: true
-    tool_progress_prompt: true
+  default: gemini-3.1-pro-preview
+  provider: gemini
 fallback_providers:
   - provider: openai-api
     model: gpt-5.6-terra
 approvals:
   destructive_slash_confirm: false
-API_SERVER_KEY: 4a5d2916d6c1595547c0b6025dd7e6aa0e076995ec5308e014330ac932f76004
+onboarding:
+  seen:
+    busy_input_prompt: true
+    tool_progress_prompt: true
+_config_version: 33
+API_SERVER_KEY: hermes
 API_SERVER_PORT: 8642
 API_SERVER_CORS_ORIGINS: '*'
+API_SERVER_ENABLED: true
