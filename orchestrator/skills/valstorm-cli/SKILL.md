@@ -58,12 +58,19 @@ Agents can interact with the Valstorm file system for RAG, knowledge retrieval, 
 *Note: VFS commands do not currently accept `--profile` or `--env` flags. You must either run them in a directory containing `valstorm.json` OR export `VALSTORM_PROFILE` and `VALSTORM_ENV` before running.*
 
 **Always append `--json` when reading data as an AI.**
-- **List Vault Contents**: `uv run --project cli valstorm vfs list <vault_id> --json` (use `root` for the root vault)
-- **Query VFS Metadata**: `uv run --project cli valstorm vfs query --query "SELECT * FROM files" --json`
-- **Upload File**: `uv run --project cli valstorm vfs upload /path/to/local/file.txt <vault_id> --json`
-- **Download File**: `uv run --project cli valstorm vfs download <file_id> /path/to/destination/ --json`
-- **Move Item**: `uv run --project cli valstorm vfs move <item_id> --from-vault-id <source_id> --to-vault-id <dest_id> --json`
-- **Delete Item**: `uv run --project cli valstorm vfs delete <item_id> --json`
+- **List Vault/Tree Contents**: `uv run --project cli valstorm vfs list [<vault_id>|/path/to/folder] [--bypass-cache] --json` (omit vault_id to get full vault tree)
+- **Path Resolution**: `uv run --project cli valstorm vfs resolve /path/to/folder --json`
+- **Full Tree Snapshot**: `uv run --project cli valstorm vfs snapshot [--bypass-cache] --json`
+- **Batch Vault Hydration**: `uv run --project cli valstorm vfs batch-vaults <vault_id_1> <vault_id_2> [--bypass-cache] --json`
+- **Query VFS Metadata**: `uv run --project cli valstorm vfs query --query "SELECT * FROM file" --json`
+- **Single / Recursive Upload**: `uv run --project cli valstorm vfs upload <local_path> --to <vault_id> [-r/--recursive] --json`
+- **Single / Recursive Download**: `uv run --project cli valstorm vfs download <item_id> [--dest <dir>] [-r/--recursive] --json`
+- **Single Move**: `uv run --project cli valstorm vfs move <item_id> --to <dest_id> [--from <source_id>] --json`
+- **Batch Move**: `uv run --project cli valstorm vfs batch-move <item_id_1> <item_id_2> --to <dest_id> [--from <source_id>] --json`
+- **Item Metadata Info**: `uv run --project cli valstorm vfs info <item_id> --json`
+- **List Version History**: `uv run --project cli valstorm vfs versions <file_id> --json`
+- **Set Active Canon Version**: `uv run --project cli valstorm vfs set-active-version <file_id> <version_id_or_number> --json`
+- **Delete Items**: `uv run --project cli valstorm vfs delete <item_id_1> [<item_id_2>...] [-f/--force] --json`
 - **Rebuild Cache**: `uv run --project cli valstorm vfs rebuild-cache --json`
 
 ## Pitfalls & Best Practices
