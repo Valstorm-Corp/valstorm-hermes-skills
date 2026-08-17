@@ -11,7 +11,7 @@ onboarding:
     busy_input_prompt: true
     tool_progress_prompt: true
 _config_version: 33
-API_SERVER_KEY: hermes
+API_SERVER_KEY: 57b21b03b0712a4f3f21a91bb249b88648014676c142466419dfdacf8c5b3a1d
 API_SERVER_PORT: 8642
 API_SERVER_CORS_ORIGINS: '*'
 API_SERVER_ENABLED: true
